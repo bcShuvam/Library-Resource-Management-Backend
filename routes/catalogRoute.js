@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { createCatalog } from '../controllers/catalogController.js';
+import { getAllCatalog, createCatalog, updateCategory, updateQuantity, deleteCatalogById } from '../controllers/catalogController.js';
 
 const router = express.Router();
 
@@ -19,6 +19,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+router.get('/', getAllCatalog);
 router.post('/', upload.single('image'), createCatalog);
+router.put('/:id', updateCategory);
+router.delete('/:id', deleteCatalogById);
+router.patch('/:id/quantity', updateQuantity);
 
 export default router;

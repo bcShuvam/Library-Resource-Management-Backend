@@ -6,8 +6,10 @@ const UserSchema = mongoose.Schema({
     photoUrl: {type: String, required: false, default: ''},
     googleId: {type: String, required: [true, 'Google Id is required']},
     role: {type: String, default: 'Student'},
-    fbToken: {type: String, required: false},
+    fbToken: {type: String, required: false, default: null},
     hasFbToken: {type: Boolean, default: false},
+    createdAt: {type: Date, default: new Date},
+    modifiedAt: {type: Date, default: null}
 });
 
 const User = mongoose.model('User', UserSchema);

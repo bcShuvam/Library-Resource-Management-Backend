@@ -5,10 +5,11 @@ const CatalogSchema = mongoose.Schema({
     name: {type: String, required: [true, 'Name is required'], unique: [true, 'Catalog name already exists']},
     description: {type: String, required: false, default: ''},
     quantity: {type: Number, default: 1},
+    borrowedQuantity: {type: Number, default: 0},
     image: {type: String, required: false, default: ''},
     availabilityStatus: {type: Boolean, default: true},
     createdAt: {type: Date, default: new Date},
-    modifiedAt: {type: Date, required: false}
+    modifiedAt: {type: Date, default: null},
 });
 
 const Catalog = mongoose.model('Catalog', CatalogSchema);
